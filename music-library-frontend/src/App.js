@@ -1,32 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import axios from 'axios';
+import CreateSongForm from './Components/CreateSongForm';
+import DisplayMusic from './Components/DisplayMusic';
+import SearchBar from './Components/SearchBar';
 
 
 function App() {
 
   const [songs, setSongs] = useState([]);
 
-function addNewSong(song){
-  let tempSong = [song, ...songs]
-
-  setSongs(tempSong)
+  function addNewSong(song){
+    let tempSong = [song, ...songs]
+    setSongs(tempSong);
 }
-
-
-
-  useEffect(()=>{
-    getAllSongs();
-  }, [])
 
 
 
   async function getAllSongs(){
     const response = await axios.get('http://127.0.0.1:8000/music/')
-    alert(response.data)
-    setSongs = (response.data)
+    console.log(response.data)
+    setSongs(response.data)
   }
 
+  useEffect(()=>{
+    getAllSongs()
+  }, [])
 
+  
 
 
   
@@ -34,7 +34,9 @@ function addNewSong(song){
 
   return (
     <div>
-      
+      <DisplayMusic parentEntries = {songs}/>
+      <CreateSongForm addNewSongProperty = {addNewSong}/>
+      <SearchBar parentData={songs} setSongs = {setSongs}/>
     </div>
   );
 }
