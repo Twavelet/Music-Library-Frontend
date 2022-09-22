@@ -31,13 +31,13 @@ const SearchBar = (props) => {
         }
     }
     return (
-        <form onSubmit={searchHandler}>
-        <div>
-            <label>Search</label>
-            <input placeholder='Enter your search here:' type='text' value={searchInput} onChange={(event) => setSearchInput(event.target.value)}/>
+        <form onSubmit={searchHandler} className='form-inline'>
+        <div classname='form-group mx-sm-3 mb-2'>
+            <label className="sr-only"><b>SEARCH</b></label>
+            <input placeholder='Enter your search here:' className="form-control" type='text' value={searchInput} onChange={(event) => setSearchInput(event.target.value)}/>
         </div>
         <div>
-            <button type='submit'>Submit</button>
+            <button type='submit'  className="btn btn-primary mb-2">Submit</button>
         </div>
     </form>
 

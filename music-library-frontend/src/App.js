@@ -33,10 +33,18 @@ function App() {
 
 
   return (
-    <div>
-      <DisplayMusic parentEntries = {songs}/>
-      <CreateSongForm addNewSongProperty = {addNewSong}/>
-      <SearchBar parentData={songs} setSongs = {setSongs}/>
+    <div  className='container-fluid bg-info p-2 text-dark bg-opacity-10'>
+      <div className='col-md-6 '>
+      <header><SearchBar parentData={songs} setSongs = {setSongs}/></header>
+      </div>
+      <body>
+        <div>
+        <DisplayMusic parentEntries = {songs}/>
+        <CreateSongForm addNewSongProperty = {addNewSong}/>
+        </div>
+      </body>
+      
+      
     </div>
   );
 }
